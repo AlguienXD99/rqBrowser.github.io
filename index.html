@@ -16,8 +16,10 @@
             <div class="circle green"></div>
         </div>
         <div class="url-bar">
-            <input type="text" value="https://tu-sitio.com" />
-            <button>Ir</button>
+            <form id="url-form">
+                <input type="text" id="url-input" value="https://tu-sitio.com" placeholder="Ingrese URL..." />
+                <button type="submit">Ir</button>
+            </form>
         </div>
     </div>
     <div class="content">
@@ -28,6 +30,17 @@
         </form>
 
         <script>
+            document.getElementById("url-form").addEventListener("submit", function(event) {
+                event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
+                
+                var url = document.getElementById("url-input").value.trim(); // Obtener la URL ingresada
+                if (url !== "") {
+                    window.location.href = url; // Redirigir a la URL ingresada
+                } else {
+                    alert("Por favor, ingresa una URL válida.");
+                }
+            });
+
             document.getElementById("search-form").addEventListener("submit", function(event) {
                 event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
                 
