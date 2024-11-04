@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación de Navegador Web</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="browser">
+    <div class="header">
+        <div class="buttons">
+            <div class="circle red"></div>
+            <div class="circle yellow"></div>
+            <div class="circle green"></div>
+        </div>
+        <div class="url-bar">
+            <input type="text" value="https://tu-sitio.com" />
+            <button>Ir</button>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Bienvenido a Tu Navegador Simulado</h1>
+        <form id="search-form">
+            <input type="search" id="search-input" name="q" placeholder="Buscar en el sitio..." autofocus>
+            <button type="submit">Buscar</button>
+        </form>
+
+        <script>
+            document.getElementById("search-form").addEventListener("submit", function(event) {
+                event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
+                
+                var query = document.getElementById("search-input").value.trim().toLowerCase(); // Obtener el valor de búsqueda, eliminar espacios en blanco y convertir a minúsculas
+                if (query !== "") {
+                    search(query); // Llamar a la función de búsqueda si la consulta no está vacía
+                } else {
+                    alert("Por favor, ingresa un término de búsqueda válido.");
+                }
+            });
+            
+            function search(query) {
+                // Definir las páginas web que quieres abrir según la búsqueda
+                switch(query) {
+                    case "mas comics":
+                        window.location.href = "mas_comics.html"; // Redirigir a la página mas_comics.html si la búsqueda coincide
+                        break;
+                    case "otros comics xd":
+                        window.location.href = "otros_comics_xd.html"; // Redirigir a la página otros_comics_xd.html si la búsqueda coincide
+                        break;
+                    case "rusia en guerra con ucrania":
+                        window.location.href = "rusiaenguerraconucrania.html"; // Redirigir a la página rusiaenguerraconucrania.html si la búsqueda coincide
+                        break;
+                    default:
+                        alert("No se encontraron resultados para: " + query); // Mostrar un mensaje de alerta si no se encuentra ninguna coincidencia
+                }
+            }
+        </script>
+    </div>
+</div>
+
+</body>
+</html>
